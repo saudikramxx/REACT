@@ -1,10 +1,19 @@
-import React from "react";
-import Heading from "./heading";
+import React, { useState } from "react";
 
 function App() {
+  let currentTime = new Date().toLocaleTimeString().replace("AM","").replace("PM","");
+   console.log(currentTime)
+   const [time,setTime] = useState(currentTime)
+
+  function getTime(){
+    let currentTime = new Date().toLocaleTimeString().replace("AM","").replace("PM","");
+    setTime(currentTime)
+  }
+  setInterval(getTime,1000)
   return (
-    <div>
-      <Heading />
+    <div className="container">
+      <h1>{time}</h1>
+      <button onClick={getTime}>Get Time</button>
     </div>
   );
 }
